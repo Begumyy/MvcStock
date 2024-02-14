@@ -16,5 +16,19 @@ namespace MvcStock.Controllers
             var degerler = db.CUSTOMERS.ToList();
             return View(degerler);
         }
+
+        [HttpGet]
+        public ActionResult YeniMusteri()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult YeniMusteri(CUSTOMERS p1)
+        {
+            db.CUSTOMERS.Add(p1);
+            db.SaveChanges();
+            return View();
+        }
     }
 }

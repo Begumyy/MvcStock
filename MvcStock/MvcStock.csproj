@@ -240,6 +240,8 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Category\YeniKategori.cshtml" />
+    <Content Include="Views\Customer\YeniMusteri.cshtml" />
+    <Content Include="Views\Product\UrunEkle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
