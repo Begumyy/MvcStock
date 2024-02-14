@@ -1,0 +1,25 @@
+﻿@using MvcStock.Models.Entity;
+@model List<CUSTOMERS>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>CUSTOMER ID</th>
+        <th>CUSTOMER ADI</th>
+        <th>CUSTOMER SOYADI</th>
+    </tr>
+    <tbody>
+        @foreach(var cus in Model)
+            {
+                <tr>
+                    <th>@cus.MUSTERIID</th>
+                    <td>@cus.MUSTERIAD</td>
+                    <td>@cus.MUSTERISOYAD</td>
+                </tr>
+            }
+    </tbody>
+</table>
+
