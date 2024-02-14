@@ -13,6 +13,8 @@
         <th>CATEGORY</th>
         <th>PRICE</th>
         <th>STOCK REMAINING</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
     </tr>
     <tbody>
         @foreach(var urn in Model)
@@ -24,8 +26,11 @@
                     <td>@urn.URUNKATEGORI</td>
                     <td>@urn.FIYAT</td>
                     <td>@urn.STOK</td>
+                    <td><a href="/PRODUCT/DELETE/@urn.URUNID" class="btn btn-danger">DELETE</a></td>
+                    <td><a href="/PRODUCT/UPDATE/@urn.URUNID" class="btn btn-success">UPDATE</a></td>
                 </tr>
             }
     </tbody>
 </table>
+<a href="/PRODUCT/YENIPRODUCT/" class="btn btn-primary">ADD NEW PRODUCT</a>
 

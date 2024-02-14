@@ -8,6 +8,8 @@
     <tr>
         <th>CATEGORY ID</th>
         <th>CATEGORY NAME</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
     </tr>
     <tbody>
         @foreach(var ktgr in Model)
@@ -15,9 +17,12 @@
                 <tr>
                     <th>@ktgr.KATEGORIID</th>
                     <td>@ktgr.KATEGORIAD</td>
+                    <td><a href="/CATEGORY/DELETE/@ktgr.KATEGORIID" class="btn btn-danger">DELETE</a></td>
+                    <td><a href="/CATEGORY/UPDATE/@ktgr.KATEGORIID" class="btn btn-success">UPDATE</a></td>
                 </tr>
          }
     </tbody>
 </table>
+<a href="/CATEGORY/YeniKategori/" class="btn btn-primary">ADD NEW CATEGORY</a>
 
 

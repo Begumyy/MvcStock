@@ -16,5 +16,19 @@ namespace MvcStock.Controllers
             var degerler = db.CATEGORIES.ToList();
             return View(degerler);
         }
+
+        [HttpGet]
+        public ActionResult YeniKategori()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult YeniKategori(CATEGORIES p1)
+        {
+            db.CATEGORIES.Add(p1);
+            db.SaveChanges();
+            return View();
+        }
     }
 }
