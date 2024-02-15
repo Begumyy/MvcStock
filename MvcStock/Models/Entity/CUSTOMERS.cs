@@ -11,7 +11,8 @@ namespace MvcStock.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CUSTOMERS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,9 @@ namespace MvcStock.Models.Entity
         }
     
         public int MUSTERIID { get; set; }
+
+        [Required(ErrorMessage ="Bu Alaný Boþ Býrakamazsýnýz!!!")]
+        [StringLength(50,ErrorMessage ="En Fazla 50 Karakterlik Ýsim Girin")]
         public string MUSTERIAD { get; set; }
         public string MUSTERISOYAD { get; set; }
     

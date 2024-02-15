@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
@@ -100,6 +101,36 @@ namespace MvcStock.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
 
+        }
+
+        public ActionResult UrunGetir(int id)
+        {
+            var urun = db.PRODUCTS.Find(id);
+
+            List<System.Web.Mvc.SelectListItem> degerler = (from i in db.CATEGORIES.ToList()
+                                                            select new System.Web.Mvc.SelectListItem
+                                                            {
+                                                                Text = i.KATEGORIAD,
+                                                                Value = i.KATEGORIID.ToString()
+                                                            }).ToList();
+            ViewBag.dgr = degerler;
+
+            return View("UrunGetir",urun);
+        }
+
+        public ActionResult Guncelle(PRODUCTS p)
+        {
+            var urun = db.PRODUCTS.Find(p.URUNID);
+            urun.URUNAD = p.URUNAD;
+            urun.MARKA=p.MARKA;
+            urun.STOK=p.STOK;
+            urun.FIYAT=p.FIYAT;
+            //urun.URUNKATEGORI=p.URUNKATEGORI;
+            CATEGORIES category = p.CATEGORIES;
+            var ktg = db.PRODUCTS.Where(m => m.URUNID == category.KATEGORIID).FirstOrDefault();
+            urun.URUNKATEGORI = ktg.CATEGORIES.KATEGORIID;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
     }

@@ -26,6 +26,10 @@ namespace MvcStock.Controllers
         [HttpPost]
         public ActionResult YeniMusteri(CUSTOMERS p1)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("YeniMusteri");
+            }
             db.CUSTOMERS.Add(p1);
             db.SaveChanges();
             return View();
