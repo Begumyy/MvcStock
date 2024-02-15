@@ -91,5 +91,16 @@ namespace MvcStock.Controllers
             return RedirectToAction("Index");
 
         }
+
+        public ActionResult DELETE(int id)
+        {
+            
+            var urun=db.PRODUCTS.Find(id);
+            db.PRODUCTS.Remove(urun);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+
     }
 }
