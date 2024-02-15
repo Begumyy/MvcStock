@@ -26,7 +26,8 @@ namespace MvcStock.Controllers
             List<System.Web.Mvc.SelectListItem> degerler =(from i in db.CATEGORIES.ToList()
                                                            select new System.Web.Mvc.SelectListItem
                                                            {
-                                                               Text =i.KATEGORIID.ToString()
+                                                               Text=i.KATEGORIAD,
+                                                               Value =i.KATEGORIID.ToString()
                                                            }).ToList();
             ViewBag.dgr = degerler;
             return View();
@@ -35,9 +36,60 @@ namespace MvcStock.Controllers
         [HttpPost]
         public ActionResult UrunEkle(PRODUCTS p1)
         {
+            //var ktg = db.CATEGORIES.Where(m=>m.KATEGORIID==p1.CATEGORIES.KATEGORIID).FirstOrDefault();
+            //p1.CATEGORIES = ktg;
+            //db.PRODUCTS.Add(p1);
+            //db.SaveChanges();
+            //return RedirectToAction("Index");
+
+
+
+            //var ktg = db.PRODUCTS.Where(m => m.URUNID == p1.CATEGORIES.KATEGORIID).FirstOrDefault();
+
+
+
+            ////var ktg = db.CATEGORIES.Where(m => m.KATEGORIID == p1.CATEGORIES.KATEGORIID).FirstOrDefault();
+
+            //if (ktg.CATEGORIES != null)
+            //{
+            //    p1.CATEGORIES.KATEGORIID = ktg.CATEGORIES.KATEGORIID;
+            //}
+
+
+            //// Şimdi ktg değişkenini p1.CATEGORIES özelliğine atayın
+            //p1.CATEGORIES.KATEGORIID = ktg.CATEGORIES.KATEGORIID; // Örneğin KATEGORIID özelliğini atayın (örneğin, bu özellik adı doğru değilse düzeltmelisiniz)
+            //                                           // Diğer özellikleri de ihtiyaca göre aynı şekilde atayabilirsiniz
+
+            //// Geri kalan kodlarınızı buraya ekleyin
+            //db.PRODUCTS.Add(p1);
+            //db.SaveChanges();
+            //return RedirectToAction("Index");
+
+
+
+
+
+
+            CATEGORIES category = p1.CATEGORIES; // Önce p1.CATEGORIES'i category adlı bir değişkene atayın
+
+            if (category == null)
+            {
+                category = new CATEGORIES(); // category null ise yeni bir örnek oluşturun
+            }
+
+            var ktg = db.PRODUCTS.Where(m => m.URUNID == category.KATEGORIID).FirstOrDefault();
+
+            // Şimdi category içindeki özellikleri kontrol ederek atamaları yapın
+            if (category != null)
+            {
+                p1.CATEGORIES = category; // p1.CATEGORIES'e category'yi atayın
+            }
+
+            // Geri kalan kodlarınızı buraya ekleyin
             db.PRODUCTS.Add(p1);
             db.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
+
         }
     }
 }
