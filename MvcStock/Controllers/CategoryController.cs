@@ -26,6 +26,10 @@ namespace MvcStock.Controllers
         [HttpPost]
         public ActionResult YeniKategori(CATEGORIES p1)
         {
+            if(!ModelState.IsValid)
+            {
+                return View("YeniKategori");
+            }
             db.CATEGORIES.Add(p1);
             db.SaveChanges();
             return View();
