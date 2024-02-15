@@ -44,5 +44,14 @@ namespace MvcStock.Controllers
             var mus = db.CUSTOMERS.Find(id);
             return View("MusteriGetir", mus);
         }
+
+        public ActionResult Guncelle(CUSTOMERS p1)
+        {
+            var musteri=db.CUSTOMERS.Find(p1.MUSTERIID);
+            musteri.MUSTERIAD = p1.MUSTERIAD;
+            musteri.MUSTERISOYAD= p1.MUSTERISOYAD;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
