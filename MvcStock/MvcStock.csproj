@@ -242,6 +242,7 @@
     <Content Include="Views\Category\YeniKategori.cshtml" />
     <Content Include="Views\Customer\YeniMusteri.cshtml" />
     <Content Include="Views\Product\UrunEkle.cshtml" />
+    <Content Include="Views\Category\KategoriGetir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -56,5 +56,19 @@ namespace MvcStock.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult KategoriGetir(int id)
+        {
+            var ktgr = db.CATEGORIES.Find(id);
+            return View("KategoriGetir",ktgr);
+        }
+
+        public ActionResult UPDATE(CATEGORIES p1)
+        {
+            var ktg = db.CATEGORIES.Find(p1.KATEGORIID);
+            ktg.KATEGORIAD = p1.KATEGORIAD;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }

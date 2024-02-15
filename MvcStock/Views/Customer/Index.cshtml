@@ -10,6 +10,8 @@
         <th>CUSTOMER ID</th>
         <th>CUSTOMER ADI</th>
         <th>CUSTOMER SOYADI</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
     </tr>
     <tbody>
         @foreach(var cus in Model)
@@ -18,6 +20,8 @@
                     <th>@cus.MUSTERIID</th>
                     <td>@cus.MUSTERIAD</td>
                     <td>@cus.MUSTERISOYAD</td>
+                    <td><a href="/CUSTOMER/DELETE/@cus.MUSTERIID" class="btn btn-danger">DELETE</a></td>
+                    <td><a href="/CUSTOMER/UPDATE/@cus.MUSTERIID" class="btn btn-success">UPDATE</a></td>
                 </tr>
             }
     </tbody>

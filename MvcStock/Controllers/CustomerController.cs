@@ -30,5 +30,13 @@ namespace MvcStock.Controllers
             db.SaveChanges();
             return View();
         }
+
+        public ActionResult DELETE (int id)
+        {
+            var musteri=db.CUSTOMERS.Find(id);
+            db.CUSTOMERS.Remove(musteri);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
