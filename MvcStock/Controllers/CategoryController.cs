@@ -30,5 +30,31 @@ namespace MvcStock.Controllers
             db.SaveChanges();
             return View();
         }
+
+        //public ActionResult DELETE(int id)
+        //{
+        //    var kategori=db.CATEGORIES.Find(id);
+        //    db.CATEGORIES.Remove(kategori);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
+
+
+        public ActionResult DELETE(int id)
+        {
+            var kategori = db.CATEGORIES.Find(id);
+
+            // Kategoriye bağlı ürünleri silebilir veya referanslarını null olarak ayarlayabilirsiniz
+            var urunler = db.PRODUCTS.Where(p => p.URUNKATEGORI == id).ToList();
+            foreach (var urun in urunler)
+            {
+                urun.URUNKATEGORI = null; // Ürünün kategori referansını null olarak ayarla
+            }
+
+            db.CATEGORIES.Remove(kategori);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
