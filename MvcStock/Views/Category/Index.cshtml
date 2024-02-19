@@ -1,5 +1,7 @@
 ﻿@using MvcStock.Models.Entity;
-@model List<CATEGORIES>
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<CATEGORIES>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -23,6 +25,7 @@
          }
     </tbody>
 </table>
+@Html.PagedListPager((IPagedList)Model,sayfa=>Url.Action("Index",new {sayfa}))
 <a href="/CATEGORY/YeniKategori/" class="btn btn-primary">ADD NEW CATEGORY</a>
 
 
