@@ -12,18 +12,20 @@
         <th>CUSTOMER SOYADI</th>
         <th>DELETE</th>
         <th>UPDATE</th>
+        <th>ALERT</th>
     </tr>
     <tbody>
-        @foreach(var cus in Model)
-            {
-                <tr>
-                    <th>@cus.MUSTERIID</th>
-                    <td>@cus.MUSTERIAD</td>
-                    <td>@cus.MUSTERISOYAD</td>
-                    <td><a href="/CUSTOMER/DELETE/@cus.MUSTERIID" class="btn btn-danger">DELETE</a></td>
-                    <td><a href="/CUSTOMER/MusteriGetir/@cus.MUSTERIID" class="btn btn-success">UPDATE</a></td>
-                </tr>
-            }
+        @foreach (var cus in Model)
+        {
+            <tr>
+                <th>@cus.MUSTERIID</th>
+                <td>@cus.MUSTERIAD</td>
+                <td>@cus.MUSTERISOYAD</td>
+                <td><a href="/CUSTOMER/DELETE/@cus.MUSTERIID" class="btn btn-danger">DELETE</a></td>
+                <td><a href="/CUSTOMER/MusteriGetir/@cus.MUSTERIID" class="btn btn-success">UPDATE</a></td>
+                <td>@Html.ActionLink("Delete button", "DELETE", new {id= cus.MUSTERIID }, new { @class = "btn btn-warning", onclick = "return confirm('Are you sure you want to delete this?')" })</td>
+            </tr>
+        }
     </tbody>
 </table>
 <a href="/CUSTOMER/YeniMusteri/" class="btn btn-primary">ADD NEW CUSTOMER</a>
