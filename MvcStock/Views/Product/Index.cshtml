@@ -5,32 +5,55 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<table class="table table-bordered">
-    <tr>
-        <th>PRODUCT ID</th>
-        <th>PRODUCT NAME</th>
-        <th>BRAND</th>
-        <th>CATEGORY</th>
-        <th>PRICE</th>
-        <th>STOCK REMAINING</th>
-        <th>DELETE</th>
-        <th>UPDATE</th>
-    </tr>
+<!-- Include DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.min.css">
+
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>PRODUCT ID</th>
+            <th>PRODUCT NAME</th>
+            <th>BRAND</th>
+            <th>CATEGORY</th>
+            <th>PRICE</th>
+            <th>STOCK REMAINING</th>
+            <th>DELETE</th>
+            <th>UPDATE</th>
+        </tr>
+    </thead>
     <tbody>
-        @foreach(var urn in Model)
-            {
-                <tr>
-                    <th>@urn.URUNID</th>
-                    <td>@urn.URUNAD</td>
-                    <td>@urn.MARKA</td>
-                    <td>@urn.URUNKATEGORI</td>
-                    <td>@urn.FIYAT</td>
-                    <td>@urn.STOK</td>
-                    <td><a href="/PRODUCT/DELETE/@urn.URUNID" class="btn btn-danger">DELETE</a></td>
-                    <td><a href="/PRODUCT/UrunGetir/@urn.URUNID" class="btn btn-success">UPDATE</a></td>
-                </tr>
-            }
+        @foreach (var urn in Model)
+        {
+            <tr>
+                <th>@urn.URUNID</th>
+                <td>@urn.URUNAD</td>
+                <td>@urn.MARKA</td>
+                <td>@urn.URUNKATEGORI</td>
+                <td>@urn.FIYAT</td>
+                <td>@urn.STOK</td>
+                <td><a href="/PRODUCT/DELETE/@urn.URUNID" class="btn btn-danger">DELETE</a></td>
+                <td><a href="/PRODUCT/UrunGetir/@urn.URUNID" class="btn btn-success">UPDATE</a></td>
+            </tr>
+        }
     </tbody>
 </table>
 <a href="/PRODUCT/UrunEkle/" class="btn btn-primary">ADD NEW PRODUCT</a>
+<!-- Include DataTables JS and initialize -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#tbl1').DataTable();
+    });
+</script>
+@*<script type="text/javascript" src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"</script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css" />
+
+    <link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+
+    <script>
+        $('#tbl1').DataTable();
+        //let table = new DataTable('#tbl1');
+    </script>*@
 

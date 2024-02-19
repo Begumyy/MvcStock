@@ -11,10 +11,16 @@ namespace MvcStock.Controllers
     {
         // GET: Customer
         MvcDbStockEntities db = new MvcDbStockEntities();
-        public ActionResult Index()
+        public ActionResult Index(string p)
         {
-            var degerler = db.CUSTOMERS.ToList();
-            return View(degerler);
+            var degerler = from d in db.CUSTOMERS select d;
+            if (!string.IsNullOrEmpty(p))
+            {
+                degerler = degerler.Where(m => m.MUSTERIAD.Contains(p));
+            }
+            return View(degerler.ToList());
+            //var degerler = db.CUSTOMERS.ToList();
+            //return View(degerler);
         }
 
         [HttpGet]
